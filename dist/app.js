@@ -1,11 +1,6 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const moment_1 = __importDefault(require("moment"));
-const const_1 = require("./config/const");
-const getDate = () => (0, moment_1.default)().format("MM/DD\tHH:mm:ss");
+import moment from "moment";
+import { EQUIPMENT_MAP, playerEquipmentKeyList, playerScoreKeyList } from "./config/const";
+const getDate = () => moment().format("MM/DD\tHH:mm:ss");
 const getPlayerScore = (keyWork) => {
     const playerScore = $("tr")
         .has(`th:contains("${keyWork}")`)
@@ -21,12 +16,12 @@ const getEquipment = (className) => {
     if (!classAttr)
         return "";
     const equipmentClass = classAttr.replace('item ', '').trim();
-    return const_1.EQUIPMENT_MAP[equipmentClass] || "";
+    return EQUIPMENT_MAP[equipmentClass] || "";
 };
 const getData = () => {
-    const playerScore = const_1.playerScoreKeyList.map(getPlayerScore);
+    const playerScore = playerScoreKeyList.map(getPlayerScore);
     const heroInfo = playerScore.join("\t");
-    const playerEquipmentKey = const_1.playerEquipmentKeyList.map(getEquipment);
+    const playerEquipmentKey = playerEquipmentKeyList.map(getEquipment);
     const heroEquipment = playerEquipmentKey.join("\t");
     const villageList = $(".villages").find("tbody > tr");
     let villageInfo = "";

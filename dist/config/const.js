@@ -1,24 +1,21 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.EQUIPMENT_MAP = exports.playerEquipmentKeyList = exports.playerScoreKeyList = exports.KEYWORDS_PLAYER_HORSE = exports.KEYWORDS_PLAYER_RIGHT_HAND = exports.KEYWORDS_PLAYER_LEFT_HAND = exports.KEYWORDS_PLAYER_BOOTS = exports.KEYWORDS_PLAYER_BODY = exports.KEYWORDS_PLAYER_HELMET = exports.KEYWORDS_PLAYER_HERO_LEVEL = exports.KEYWORDS_PLAYER_DEFENDER = exports.KEYWORDS_PLAYER_ATTACKER = exports.KEYWORDS_PLAYER_INFO = exports.proxy = void 0;
-exports.proxy = "socks5://104.171.135.62:61336";
-exports.KEYWORDS_PLAYER_INFO = "人口";
-exports.KEYWORDS_PLAYER_ATTACKER = "攻擊者";
-exports.KEYWORDS_PLAYER_DEFENDER = "防禦者";
-exports.KEYWORDS_PLAYER_HERO_LEVEL = "英雄等級";
-exports.KEYWORDS_PLAYER_HELMET = "頭盔";
-exports.KEYWORDS_PLAYER_BODY = "護甲";
-exports.KEYWORDS_PLAYER_BOOTS = "靴子";
-exports.KEYWORDS_PLAYER_LEFT_HAND = "左手";
-exports.KEYWORDS_PLAYER_RIGHT_HAND = "右手";
-exports.KEYWORDS_PLAYER_HORSE = "坐騎";
-exports.playerScoreKeyList = [
-    exports.KEYWORDS_PLAYER_INFO,
-    exports.KEYWORDS_PLAYER_ATTACKER,
-    exports.KEYWORDS_PLAYER_DEFENDER,
-    exports.KEYWORDS_PLAYER_HERO_LEVEL,
+export const proxy = "socks5://104.171.135.62:61336";
+export const KEYWORDS_PLAYER_INFO = "人口";
+export const KEYWORDS_PLAYER_ATTACKER = "攻擊者";
+export const KEYWORDS_PLAYER_DEFENDER = "防禦者";
+export const KEYWORDS_PLAYER_HERO_LEVEL = "英雄等級";
+export const KEYWORDS_PLAYER_HELMET = "頭盔";
+export const KEYWORDS_PLAYER_BODY = "護甲";
+export const KEYWORDS_PLAYER_BOOTS = "靴子";
+export const KEYWORDS_PLAYER_LEFT_HAND = "左手";
+export const KEYWORDS_PLAYER_RIGHT_HAND = "右手";
+export const KEYWORDS_PLAYER_HORSE = "坐騎";
+export const playerScoreKeyList = [
+    KEYWORDS_PLAYER_INFO,
+    KEYWORDS_PLAYER_ATTACKER,
+    KEYWORDS_PLAYER_DEFENDER,
+    KEYWORDS_PLAYER_HERO_LEVEL,
 ];
-exports.playerEquipmentKeyList = [
+export const playerEquipmentKeyList = [
     ".helmet",
     ".body",
     ".shoes",
@@ -26,7 +23,7 @@ exports.playerEquipmentKeyList = [
     ".rightHand",
     ".horse",
 ];
-exports.EQUIPMENT_MAP = {
+export const EQUIPMENT_MAP = {
     "item0": "無裝備",
     "item1": "經驗 LV1",
     "item2": "經驗 LV2",
