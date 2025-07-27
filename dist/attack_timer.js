@@ -231,9 +231,12 @@ if (savedTime && savedTime > arrived) {
 arrivedTime.value = formatISODateTime(arrived);
 arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
 
-savedTimeList
-  .filter(saveTime => new Date(saveTime) > arrived) // Filter out empty strings
-  .forEach(saveTime => {
-    addTimeItem(saveTime);
-  });
-//});
+document.addEventListener('DOMContentLoaded', () => {
+  if (savedTimeList?.length > 0) {
+    savedTimeList
+      .filter(saveTime => saveTime > arrived) // Filter out empty strings
+      .forEach(saveTime => {
+        addTimeItem(saveTime);
+      });
+  }
+});
