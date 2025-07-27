@@ -117,12 +117,12 @@ timeItem.appendChild(addButton);
 const formatISODateTime = (date) => {
   const pad = (n) => n.toString().padStart(2, '0');
   return date.getFullYear() + '-' +
-         pad(date.getMonth() + 1) + '-' +
-         pad(date.getDate()) + 'T' +
-         pad(date.getHours()) + ':' +
-         pad(date.getMinutes()) + ':' +
-         pad(date.getSeconds()) + '.' +
-         pad(date.getMilliseconds(), 3);
+    pad(date.getMonth() + 1) + '-' +
+    pad(date.getDate()) + 'T' +
+    pad(date.getHours()) + ':' +
+    pad(date.getMinutes()) + ':' +
+    pad(date.getSeconds()) + '.' +
+    pad(date.getMilliseconds(), 3);
 };
 
 let t = null;
@@ -136,13 +136,13 @@ function last_counter() {
 
 function countdown() {
   if (new Date(timeInput.value) - new Date() > 0) {
-    countdownText.innerHTML = "倒數計時: " + (new Date(timeInput.value) - new Date())/1000;
+    countdownText.innerHTML = "倒數計時: " + (new Date(timeInput.value) - new Date()) / 1000;
     ct = setTimeout(countdown, 500);
   }
 }
 
 // 3. Add event handler
-setButton.addEventListener ("click", () => {
+setButton.addEventListener("click", () => {
   if (new Date(timeInput.value) - new Date() > 1500) {
     t = setTimeout(last_counter, new Date(timeInput.value) - new Date() - 1000);
   } else {
@@ -157,7 +157,7 @@ setButton.addEventListener ("click", () => {
 });
 
 // 3. Add event handler
-resetButton.addEventListener ("click", () => {
+resetButton.addEventListener("click", () => {
   clearTimeout(t);
   clearTimeout(ct);
   countdownText.innerHTML = "已取消攻擊";
@@ -168,15 +168,15 @@ resetButton.addEventListener ("click", () => {
   arrivedTime.disabled = false;
 });
 
-timeInput.addEventListener ("change", () => {
+timeInput.addEventListener("change", () => {
   const travelTime = document.getElementById('in').innerHTML.match(/\d{1,2}:\d{2}:\d{2}/g)[0].split(':');
-  const arrived = new Date(new Date(timeInput.value).getTime() + (travelTime[0]*3600 + travelTime[1]*60 + travelTime[2]*1) * 1000);
+  const arrived = new Date(new Date(timeInput.value).getTime() + (travelTime[0] * 3600 + travelTime[1] * 60 + travelTime[2] * 1) * 1000);
   arrivedTime.value = formatISODateTime(arrived);
 });
 
-arrivedTime.addEventListener ("change", () => {
+arrivedTime.addEventListener("change", () => {
   const travelTime = document.getElementById('in').innerHTML.match(/\d{1,2}:\d{2}:\d{2}/g)[0].split(':');
-  const depart = new Date(new Date(arrivedTime.value).getTime() - (travelTime[0]*3600 + travelTime[1]*60 + travelTime[2]*1) * 1000);
+  const depart = new Date(new Date(arrivedTime.value).getTime() - (travelTime[0] * 3600 + travelTime[1] * 60 + travelTime[2] * 1) * 1000);
   timeInput.value = formatISODateTime(depart);
   localStorage.setItem(storageKey, arrivedTime.value);
 });
@@ -216,26 +216,24 @@ addButton.addEventListener("click", () => {
 
 // 儲存的出發時間
 //window.addEventListener('DOMContentLoaded', () => {
-  const d = new Date();
-  timeInput.value = formatISODateTime(d);
+const d = new Date();
+timeInput.value = formatISODateTime(d);
 
-  const travelTime = document.getElementById('in').innerHTML.match(/\d{1,2}:\d{2}:\d{2}/g)[0].split(':');
-  let arrived = new Date(d.getTime() + (travelTime[0]*3600 + travelTime[1]*60 + travelTime[2]*1) * 1000);
+const travelTime = document.getElementById('in').innerHTML.match(/\d{1,2}:\d{2}:\d{2}/g)[0].split(':');
+let arrived = new Date(d.getTime() + (travelTime[0] * 3600 + travelTime[1] * 60 + travelTime[2] * 1) * 1000);
 
-  
-  const savedTime = new Date(localStorage.getItem(storageKey));
-  if (savedTime && savedTime > arrived) {
-    arrived = savedTime;
-  }
-  
-  arrivedTime.value = formatISODateTime(arrived);
-  arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
-  
-  if (savedTimeList.length > 0) {
-    savedTimeList
-    .filter(saveTime => new Date(saveTime) > arrived) // Filter out empty strings
-    .forEach(saveTime => {
-      addTimeItem(saveTime);
-    });
-  }
+
+const savedTime = new Date(localStorage.getItem(storageKey));
+if (savedTime && savedTime > arrived) {
+  arrived = savedTime;
+}
+
+arrivedTime.value = formatISODateTime(arrived);
+arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
+
+(savedTimeList || [])
+  .filter(saveTime => new Date(saveTime) > arrived) // Filter out empty strings
+  .forEach(saveTime => {
+    addTimeItem(saveTime);
+  });
 //});
