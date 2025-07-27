@@ -3,7 +3,7 @@ document.getElementById('content').style.marginBottom = '100px';
 
 const styleElement = document.createElement('style');
 styleElement.setAttribute('type', 'text/css');
-styleElement.setAttribute('src', 'https://hobexd.github.io/Linsen2020/attack_timer.css');
+styleElement.setAttribute('src', 'https://hobexd.github.io/sky7519331/trToolButton/tree/main/src/attack_timer.css');
 document.head.appendChild(styleElement);
 
 const storageKey = 'savedArrivedTime';
