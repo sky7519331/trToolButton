@@ -68,7 +68,9 @@ const pushIcon = `
   </svg>
 `;
 
-const timeItemTemplate = `
+const template = document.createElement('template');
+
+template.innerHTML = `
   <div class="attack-timer-item">
     <input type="text" placeholder="儲存時間">
     <button aria-label="Delete" style="display:none; width:24px; height:24px;">${deleteIcon}</button>
@@ -174,7 +176,7 @@ arrivedTime.addEventListener ("change", () => {
 });
 
 addButton.addEventListener("click", () => {
-  const newItem = document.createElement(timeItemTemplate);
+  const newItem = template.content.firstElementChild.cloneNode(true);
   const input = newItem.querySelector('input');
   input.value = saveTimeInput.value;
   saveTimeInput.value = '';
