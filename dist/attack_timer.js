@@ -113,6 +113,7 @@ endBlock.appendChild(resetButton);
 timeList.appendChild(timeItem);
 timeItem.appendChild(saveTimeInput);
 timeItem.appendChild(addButton);
+timeItem.appendChild(deleteButton);
 timeItem.appendChild(pushButton);
 
 const formatISODateTime = (date) => {
