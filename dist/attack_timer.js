@@ -231,7 +231,7 @@ if (savedTime && savedTime > arrived) {
 arrivedTime.value = formatISODateTime(arrived);
 arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
 
-(savedTimeList || [])
+savedTimeList
   .filter(saveTime => new Date(saveTime) > arrived) // Filter out empty strings
   .forEach(saveTime => {
     addTimeItem(saveTime);
