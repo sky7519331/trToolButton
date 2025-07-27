@@ -7,7 +7,9 @@ styleElement.setAttribute('href', 'https://sky7519331.github.io/trToolButton/dis
 document.head.appendChild(styleElement);
 
 const storageKey = 'savedArrivedTime';
+const storageKey2 = 'savedArrivedListTime';
 const buttonClassName = 'textButtonV1 green';
+const savedTimeList = JSON.parse(localStorage.getItem(storageKey2)) || [];
 
 const contentDiv = document.createElement("div");
 contentDiv.className = 'attack-timer';
@@ -176,13 +178,12 @@ arrivedTime.addEventListener ("change", () => {
   localStorage.setItem(storageKey, arrivedTime.value);
 });
 
-addButton.addEventListener("click", () => {
+const addTimeItem = (saveTime) => {
   const newItem = template.content.firstElementChild.cloneNode(true);
-  const input = newItem.querySelector('input');
-  input.value = saveTimeInput.value;
-  saveTimeInput.value = '';
   const del = newItem.querySelector('[aria-label="Delete"]');
   const push = newItem.querySelector('[aria-label="Push"]');
+  const input = newItem.querySelector('input');
+  input.value = saveTime;
 
   del.addEventListener("click", () => {
     newItem.remove();
@@ -196,6 +197,17 @@ addButton.addEventListener("click", () => {
   });
 
   timeList.appendChild(newItem);
+};
+
+addButton.addEventListener("click", () => {
+  const saveTime = saveTimeInput.value;
+
+  savedTimeList.push(saveTime);
+  localStorage.setItem(storageKey2, JSON.stringify(savedTimeList));
+
+  addTimeItem(saveTime);
+
+  saveTimeInput.value = '';
 });
 
 
@@ -215,4 +227,12 @@ addButton.addEventListener("click", () => {
   
   arrivedTime.value = formatISODateTime(arrived);
   arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
+  
+  if (savedTimeList.length > 0) {
+    savedTimeList
+    .filter(saveTime => saveTime > arrived) // Filter out empty strings
+    .forEach(saveTime => {
+      addTimeItem(saveTime);
+    });
+  }
 //});
