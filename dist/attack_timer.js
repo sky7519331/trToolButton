@@ -74,8 +74,8 @@ const templateClassName = 'textButtonV2 buttonFramed plus rectangle withIcon gre
 template.innerHTML = `
   <div class="attack-timer-item">
     <input type="text" placeholder="儲存時間">
-    <button aria-label="Delete" width="24px" height="24px" class="${templateClassName}">${deleteIcon}</button>
-    <button aria-label="Push" width="24px" height="24px" class="${templateClassName}">${pushIcon}</button>
+    <button aria-label="Delete" Style="width: 24px; height: 24px;" class="${templateClassName}">${deleteIcon}</button>
+    <button aria-label="Push" Style="width: 24px; height: 24px;" class="${templateClassName}">${pushIcon}</button>
   </div>
 `;
 
