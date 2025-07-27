@@ -157,13 +157,10 @@ const addTimeItem = (saveTime) => {
   timeList.appendChild(newItem);
 };
 
-console.log('Saved times:', savedTimeList);
-console.log('Saved time:', localStorage.getItem(storageKey2));
 if (savedTimeList?.length > 0) {
   savedTimeList
     // .filter(saveTime => new Date(saveTime) > arrived) // Filter out empty strings
     .forEach(saveTime => {
-      console.log('Saved time:', saveTime);
       addTimeItem(saveTime);
     });
 }
