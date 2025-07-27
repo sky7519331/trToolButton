@@ -233,7 +233,7 @@ addButton.addEventListener("click", () => {
   
   if (savedTimeList.length > 0) {
     savedTimeList
-    .filter(saveTime => saveTime > arrived) // Filter out empty strings
+    .filter(saveTime => new Date(saveTime) > arrived) // Filter out empty strings
     .forEach(saveTime => {
       addTimeItem(saveTime);
     });
