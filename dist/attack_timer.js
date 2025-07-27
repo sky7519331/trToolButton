@@ -56,18 +56,23 @@ const addButton = document.createElement("button");
 addButton.className = "textButtonV2 buttonFramed plus rectangle withIcon green";
 addButton.style.width = '24px';
 addButton.style.height = '24px';
+addButton.setAttribute("aria-label", "Add");
 addButton.innerHTML = addIcon;
 
 const pushButton = document.createElement("button");
 pushButton.className = "textButtonV2 buttonFramed plus rectangle withIcon green";
 pushButton.style.width = '24px';
 pushButton.style.height = '24px';
+pushButton.style.display = 'none'; // Initially hidden
+pushButton.setAttribute("aria-label", "Push");
 pushButton.innerHTML = pushIcon;
 
 const deleteButton = document.createElement("button");
 deleteButton.className = "textButtonV2 buttonFramed plus rectangle withIcon red";
 deleteButton.style.width = '24px';
 deleteButton.style.height = '24px';
+pushButton.style.display = 'none'; // Initially hidden
+deleteButton.setAttribute("aria-label", "Delete");
 deleteButton.innerHTML = deleteIcon;
 
 const saveTimeInput = document.createElement("input");
@@ -92,6 +97,7 @@ endBlock.appendChild(resetButton);
 timeList.appendChild(timeItem);
 timeItem.appendChild(saveTimeInput);
 timeItem.appendChild(addButton);
+timeItem.appendChild(pushButton);
 
 const formatISODateTime = (date) => {
   const pad = (n) => n.toString().padStart(2, '0');
@@ -162,17 +168,24 @@ arrivedTime.addEventListener ("change", () => {
 
 addButton.addEventListener("click", () => {
   const newItem = timeItem.cloneNode(true);
-  newItem.querySelector('input').value = '';
-  newItem.querySelector('button').innerHTML = addIcon;
-  newItem.querySelector('button').className = "textButtonV2 buttonFramed plus rectangle withIcon green";
-  newItem.querySelector('button').addEventListener("click", () => {
-    const savedTime = new Date(newItem.querySelector('input').value);
-    if (savedTime) {
-      localStorage.setItem(storageKey, savedTime.toISOString());
-      arrivedTime.value = formatISODateTime(savedTime);
+  const add = newItem.querySelector('[aria-label="Add"]');
+  const del = newItem.querySelector('[aria-label="Delete"]');
+  const push = newItem.querySelector('[aria-label="Push"]');
+  add.style.display = 'none'; // Hide the add button
+  del.style.display = 'inline-block'; // Show the delete button
+  push.style.display = 'inline-block'; // Show the push button
+  del.addEventListener("click", () => {
+    newItem.remove();
+  });
+
+  push.addEventListener("click", () => {
+    const input = newItem.querySelector('input');
+    if (input.value) {
+      arrivedTime.value = formatISODateTime(input.value);
       arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
     }
   });
+
   timeList.appendChild(newItem);
 });
 
