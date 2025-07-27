@@ -1,0 +1,30 @@
+.attackDiv {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 99;
+  display: flex;
+}
+
+.attackDiv > div {
+  display: flex;
+  width: 200px;
+}
+
+.attack-timer-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.attack-timer-list > div:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.attack-timer-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
