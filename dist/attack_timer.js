@@ -187,6 +187,12 @@ addButton.addEventListener("click", () => {
   const add = newItem.querySelector('[aria-label="Add"]');
   const del = newItem.querySelector('[aria-label="Delete"]');
   const push = newItem.querySelector('[aria-label="Push"]');
+  console.log({
+  add,
+  del,
+  push,
+  html: newItem.innerHTML
+});
   add.style.display = 'none'; // Hide the add button
   del.style.display = 'inline'; // Show the delete button
   push.style.display = 'inline'; // Show the push button
