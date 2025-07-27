@@ -63,8 +63,8 @@ const deleteIcon = `
 
 const pushIcon = `
   <svg width="12" height="12" viewBox="0 0 18 18">
-    <path d=""M6 0L6 12L0 12L11 22L22 12L16 12L16 0Z"" class="outline"></path>
-    <path d=""M6 0L6 12L0 12L11 22L22 12L16 12L16 0Z"" class="icon"></path>
+    <path d="M6 0L6 12L0 12L11 22L22 12L16 12L16 0Z" class="outline"></path>
+    <path d="M6 0L6 12L0 12L11 22L22 12L16 12L16 0Z" class="icon"></path>
   </svg>
 `;
 
