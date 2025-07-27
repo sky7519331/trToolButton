@@ -73,8 +73,8 @@ const template = document.createElement('template');
 template.innerHTML = `
   <div class="attack-timer-item">
     <input type="text" placeholder="儲存時間">
-    <button aria-label="Delete" style="display:none; width:24px; height:24px;">${deleteIcon}</button>
-    <button aria-label="Push" style="display:none; width:24px; height:24px;">${pushIcon}</button>
+    <button aria-label="Delete" width:24px; height:24px;">${deleteIcon}</button>
+    <button aria-label="Push" width:24px; height:24px;">${pushIcon}</button>
   </div>
 `;
 
