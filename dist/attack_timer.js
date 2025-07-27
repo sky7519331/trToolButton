@@ -47,10 +47,26 @@ arrivedText.innerHTML = '抵達時間: ';
 const arrivedTime = document.createElement("input");
 arrivedTime.setAttribute("type", "text");
 // arrivedTime.className = 'attack-timer-input';
+const addIcon = `
+  <svg width="12" height="12" viewBox="0 0 18 18">
+    <path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z" class="outline"></path>
+    <path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z" class="icon"></path>
+  </svg>
+`;
 
-const addIcon = '<svg width="12" height="12" viewBox="0 0 18 18"><svg viewBox="0 0 18 18" class="outline"><path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z"></path></svg><svg viewBox="0 0 18 18" class="icon"><path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z"></path></svg></svg>';
-const deleteIcon = '<svg width="12" height="12" viewBox="0 0 18 6"><svg viewBox="0 0 18 6" class="outline"><path d="M16 4H2V2h14z"></path></svg><svg viewBox="0 0 18 6" class="icon"><path d="M16 4H2V2h14z"></path></svg></svg>';
-const pushIcon = '<svg width="12" height="12" viewBox="0 0 18 18"><svg viewBox="0 0 18 18" class="outline"><path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z"></path></svg><svg viewBox="0 0 18 18" class="icon"><path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z"></path></svg></svg>';
+const deleteIcon = `
+  <svg width="12" height="12" viewBox="0 0 18 6">
+    <path d="M16 4H2V2h14z" class="outline"></path>
+    <path d="M16 4H2V2h14z" class="icon"></path>
+  </svg>
+`;
+
+const pushIcon = `
+  <svg width="12" height="12" viewBox="0 0 18 18">
+    <path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z" class="outline"></path>
+    <path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z" class="icon"></path>
+  </svg>
+`;
 
 const addButton = document.createElement("button");
 addButton.className = "textButtonV2 buttonFramed plus rectangle withIcon green";
@@ -71,7 +87,7 @@ const deleteButton = document.createElement("button");
 deleteButton.className = "textButtonV2 buttonFramed plus rectangle withIcon red";
 deleteButton.style.width = '24px';
 deleteButton.style.height = '24px';
-pushButton.style.display = 'none'; // Initially hidden
+deleteButton.style.display = 'none'; // Initially hidden
 deleteButton.setAttribute("aria-label", "Delete");
 deleteButton.innerHTML = deleteIcon;
 
@@ -172,8 +188,8 @@ addButton.addEventListener("click", () => {
   const del = newItem.querySelector('[aria-label="Delete"]');
   const push = newItem.querySelector('[aria-label="Push"]');
   add.style.display = 'none'; // Hide the add button
-  del.style.display = 'default'; // Show the delete button
-  push.style.display = 'default'; // Show the push button
+  del.style.display = 'inline'; // Show the delete button
+  push.style.display = 'inline'; // Show the push button
   del.addEventListener("click", () => {
     newItem.remove();
   });
