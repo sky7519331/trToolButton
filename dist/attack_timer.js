@@ -74,18 +74,6 @@ const saveTimeInput = document.createElement("input");
 saveTimeInput.setAttribute("type", "text");
 saveTimeInput.setAttribute("placeholder", "儲存時間");
 
-
-function formatISODateTime(date) {
-  const pad = (n) => n.toString().padStart(2, '0');
-  return date.getFullYear() + '-' +
-         pad(date.getMonth() + 1) + '-' +
-         pad(date.getDate()) + 'T' +
-         pad(date.getHours()) + ':' +
-         pad(date.getMinutes()) + ':' +
-         pad(date.getSeconds()) + '.' +
-         pad(date.getMilliseconds(), 3);
-}
-
 // 2. Append somewhere
 const body = document.getElementsByClassName("contentPage")[0];
 body.appendChild(contentDiv);
@@ -104,6 +92,17 @@ endBlock.appendChild(resetButton);
 timeList.appendChild(timeItem);
 timeItem.appendChild(saveTimeInput);
 timeItem.appendChild(addButton);
+
+const formatISODateTime = (date) => {
+  const pad = (n) => n.toString().padStart(2, '0');
+  return date.getFullYear() + '-' +
+         pad(date.getMonth() + 1) + '-' +
+         pad(date.getDate()) + 'T' +
+         pad(date.getHours()) + ':' +
+         pad(date.getMinutes()) + ':' +
+         pad(date.getSeconds()) + '.' +
+         pad(date.getMilliseconds(), 3);
+};
 
 let t = null;
 let ct = null;
@@ -159,6 +158,22 @@ arrivedTime.addEventListener ("change", () => {
   const depart = new Date(new Date(arrivedTime.value).getTime() - (travelTime[0]*3600 + travelTime[1]*60 + travelTime[2]*1) * 1000);
   timeInput.value = formatISODateTime(depart);
   localStorage.setItem(storageKey, arrivedTime.value);
+});
+
+addButton.addEventListener("click", () => {
+  const newItem = timeItem.cloneNode(true);
+  newItem.querySelector('input').value = '';
+  newItem.querySelector('button').innerHTML = addIcon;
+  newItem.querySelector('button').className = "textButtonV2 buttonFramed plus rectangle withIcon green";
+  newItem.querySelector('button').addEventListener("click", () => {
+    const savedTime = new Date(newItem.querySelector('input').value);
+    if (savedTime) {
+      localStorage.setItem(storageKey, savedTime.toISOString());
+      arrivedTime.value = formatISODateTime(savedTime);
+      arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+  timeList.appendChild(newItem);
 });
 
 
