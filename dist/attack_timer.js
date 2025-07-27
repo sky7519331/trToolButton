@@ -168,18 +168,18 @@ arrivedTime.addEventListener ("change", () => {
 
 addButton.addEventListener("click", () => {
   const newItem = timeItem.cloneNode(true);
-  const add = newItem.find('[aria-label="Add"]');
-  const del = newItem.find('[aria-label="Delete"]');
-  const push = newItem.find('[aria-label="Push"]');
+  const add = newItem.querySelector('[aria-label="Add"]');
+  const del = newItem.querySelector('[aria-label="Delete"]');
+  const push = newItem.querySelector('[aria-label="Push"]');
   add.style.display = 'none'; // Hide the add button
-  del.style.display = 'inline-block'; // Show the delete button
-  push.style.display = 'inline-block'; // Show the push button
+  del.style.display = 'default'; // Show the delete button
+  push.style.display = 'default'; // Show the push button
   del.addEventListener("click", () => {
     newItem.remove();
   });
 
   push.addEventListener("click", () => {
-    const input = newItem.find('input');
+    const input = newItem.querySelector('input');
     if (input.value) {
       arrivedTime.value = formatISODateTime(input.value);
       arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
