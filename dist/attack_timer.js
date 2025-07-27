@@ -58,7 +58,7 @@ const addIcon = `
   </svg>
 `;
 const deleteIcon = `
-  <svg>
+  <svg width="12" height="12">
     <svg width="12" height="12" viewBox="0 0 18 6" class="outline">
       <path d="M16 4H2V2h14z"></path>
     </svg>
@@ -68,7 +68,7 @@ const deleteIcon = `
   </svg>
 `;
 const pushIcon = `
-  <svg>
+  <svg width="12" height="12">
     <svg width="12" height="12" viewBox="0 0 18 18" class="outline">
       <path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z"></path>
     </svg>
