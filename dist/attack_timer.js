@@ -139,6 +139,11 @@ const addTimeItem = (saveTime) => {
   input.value = saveTime;
 
   del.addEventListener("click", () => {
+    const index = savedTimeList.indexOf(input.value);
+    if (index > -1) {
+      savedTimeList.splice(index, 1);
+    }
+    localStorage.setItem(storageKey2, JSON.stringify(savedTimeList));
     newItem.remove();
   });
 
@@ -156,7 +161,7 @@ console.log('Saved times:', savedTimeList);
 console.log('Saved time:', localStorage.getItem(storageKey2));
 if (savedTimeList?.length > 0) {
   savedTimeList
-    // .filter(saveTime => saveTime > arrived) // Filter out empty strings
+    // .filter(saveTime => new Date(saveTime) > arrived) // Filter out empty strings
     .forEach(saveTime => {
       console.log('Saved time:', saveTime);
       addTimeItem(saveTime);
