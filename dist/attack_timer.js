@@ -190,7 +190,7 @@ addButton.addEventListener("click", () => {
 
   push.addEventListener("click", () => {
     if (input.value) {
-      arrivedTime.value = formatISODateTime(input.value);
+      arrivedTime.value = formatISODateTime(new Date(input.value));
       arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
     }
   });
