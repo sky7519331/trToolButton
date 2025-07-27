@@ -68,26 +68,20 @@ const pushIcon = `
   </svg>
 `;
 
+const timeItemTemplate = `
+  <div class="attack-timer-item">
+    <input type="text" placeholder="儲存時間">
+    <button aria-label="Delete" style="display:none; width:24px; height:24px;">${deleteIcon}</button>
+    <button aria-label="Push" style="display:none; width:24px; height:24px;">${pushIcon}</button>
+  </div>
+`;
+
 const addButton = document.createElement("button");
 addButton.className = "textButtonV2 buttonFramed plus rectangle withIcon green";
 addButton.style.width = '24px';
 addButton.style.height = '24px';
 addButton.setAttribute("aria-label", "Add");
 addButton.innerHTML = addIcon;
-
-const pushButton = document.createElement("button");
-pushButton.className = "textButtonV2 buttonFramed plus rectangle withIcon green";
-pushButton.style.width = '24px';
-pushButton.style.height = '24px';
-pushButton.setAttribute("aria-label", "Push");
-pushButton.innerHTML = pushIcon;
-
-const deleteButton = document.createElement("button");
-deleteButton.className = "textButtonV2 buttonFramed plus rectangle withIcon red";
-deleteButton.style.width = '24px';
-deleteButton.style.height = '24px';
-deleteButton.setAttribute("aria-label", "Delete");
-deleteButton.innerHTML = deleteIcon;
 
 const saveTimeInput = document.createElement("input");
 saveTimeInput.setAttribute("type", "text");
@@ -180,16 +174,18 @@ arrivedTime.addEventListener ("change", () => {
 });
 
 addButton.addEventListener("click", () => {
-  const newItem = timeItem.cloneNode(false);
-  const del = deleteButton.cloneNode(true);
-  const push = pushButton.cloneNode(true);
-  
+  const newItem = document.createElement(timeItemTemplate);
+  const input = newItem.querySelector('input');
+  input.value = saveTimeInput.value;
+  saveTimeInput.value = '';
+  const del = newItem.querySelector('[aria-label="Delete"]');
+  const push = newItem.querySelector('[aria-label="Push"]');
+
   del.addEventListener("click", () => {
     newItem.remove();
   });
 
   push.addEventListener("click", () => {
-    const input = timeItem.querySelector('input');
     if (input.value) {
       arrivedTime.value = formatISODateTime(input.value);
       arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
