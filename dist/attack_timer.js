@@ -70,11 +70,12 @@ const pushIcon = `
 
 const template = document.createElement('template');
 
+const templateClassName = 'textButtonV2 buttonFramed plus rectangle withIcon green';
 template.innerHTML = `
   <div class="attack-timer-item">
     <input type="text" placeholder="儲存時間">
-    <button aria-label="Delete" width:24px; height:24px;">${deleteIcon}</button>
-    <button aria-label="Push" width:24px; height:24px;">${pushIcon}</button>
+    <button aria-label="Delete" class="${templateClassName}">${deleteIcon}</button>
+    <button aria-label="Push" class="${templateClassName}">${pushIcon}</button>
   </div>
 `;
 
