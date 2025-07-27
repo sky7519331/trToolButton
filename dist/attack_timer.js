@@ -1,9 +1,9 @@
 // editing UI
 document.getElementById('content').style.marginBottom = '100px';
 
-const styleElement = document.createElement('style');
-styleElement.setAttribute('type', 'text/css');
-styleElement.setAttribute('src', 'https://sky7519331.github.io/trToolButton/dist/attack_timer.css');
+const styleElement = document.createElement('link');
+styleElement.setAttribute('rel', 'stylesheet');
+styleElement.setAttribute('href', 'https://sky7519331.github.io/trToolButton/dist/attack_timer.css');
 document.head.appendChild(styleElement);
 
 const storageKey = 'savedArrivedTime';
