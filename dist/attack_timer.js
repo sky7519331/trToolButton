@@ -11,6 +11,9 @@ const storageKey2 = 'savedArrivedListTime';
 const buttonClassName = 'textButtonV1 green';
 const savedTimeList = JSON.parse(localStorage.getItem(storageKey2)) || [];
 
+console.log('Saved times:', savedTimeList);
+console.log('Saved time:', localStorage.getItem(storageKey2));
+
 const contentDiv = document.createElement("div");
 contentDiv.className = 'attack-timer';
 
