@@ -63,8 +63,8 @@ const deleteIcon = `
 
 const pushIcon = `
   <svg width="12" height="12" viewBox="0 0 18 18">
-    <path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z" class="outline"></path>
-    <path d="M16 10h-6v6H8v-6H2V8h6V2h2v6h6z" class="icon"></path>
+    <path d=""M6 0L6 12L0 12L11 22L22 12L16 12L16 0Z"" class="outline"></path>
+    <path d=""M6 0L6 12L0 12L11 22L22 12L16 12L16 0Z"" class="icon"></path>
   </svg>
 `;
 
@@ -74,8 +74,8 @@ const templateClassName = 'textButtonV2 buttonFramed plus rectangle withIcon gre
 template.innerHTML = `
   <div class="attack-timer-item">
     <input type="text" placeholder="儲存時間">
-    <button aria-label="Delete" class="${templateClassName}">${deleteIcon}</button>
-    <button aria-label="Push" class="${templateClassName}">${pushIcon}</button>
+    <button aria-label="Delete" width="24px" height="24px" class="${templateClassName}">${deleteIcon}</button>
+    <button aria-label="Push" width="24px" height="24px" class="${templateClassName}">${pushIcon}</button>
   </div>
 `;
 
