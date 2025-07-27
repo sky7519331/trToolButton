@@ -131,6 +131,38 @@ function last_counter() {
   }, new Date(timeInput.value) - new Date());
 }
 
+const addTimeItem = (saveTime) => {
+  const newItem = template.content.firstElementChild.cloneNode(true);
+  const del = newItem.querySelector('[aria-label="Delete"]');
+  const push = newItem.querySelector('[aria-label="Push"]');
+  const input = newItem.querySelector('input');
+  input.value = saveTime;
+
+  del.addEventListener("click", () => {
+    newItem.remove();
+  });
+
+  push.addEventListener("click", () => {
+    if (input.value) {
+      arrivedTime.value = formatISODateTime(new Date(input.value));
+      arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+
+  timeList.appendChild(newItem);
+};
+
+console.log('Saved times:', savedTimeList);
+console.log('Saved time:', localStorage.getItem(storageKey2));
+if (savedTimeList?.length > 0) {
+  savedTimeList
+    // .filter(saveTime => saveTime > arrived) // Filter out empty strings
+    .forEach(saveTime => {
+      console.log('Saved time:', saveTime);
+      addTimeItem(saveTime);
+    });
+}
+
 function countdown() {
   if (new Date(timeInput.value) - new Date() > 0) {
     countdownText.innerHTML = "倒數計時: " + (new Date(timeInput.value) - new Date()) / 1000;
@@ -178,27 +210,6 @@ arrivedTime.addEventListener("change", () => {
   localStorage.setItem(storageKey, arrivedTime.value);
 });
 
-const addTimeItem = (saveTime) => {
-  const newItem = template.content.firstElementChild.cloneNode(true);
-  const del = newItem.querySelector('[aria-label="Delete"]');
-  const push = newItem.querySelector('[aria-label="Push"]');
-  const input = newItem.querySelector('input');
-  input.value = saveTime;
-
-  del.addEventListener("click", () => {
-    newItem.remove();
-  });
-
-  push.addEventListener("click", () => {
-    if (input.value) {
-      arrivedTime.value = formatISODateTime(new Date(input.value));
-      arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-  });
-
-  timeList.appendChild(newItem);
-};
-
 addButton.addEventListener("click", () => {
   const saveTime = saveTimeInput.value;
 
@@ -227,15 +238,3 @@ if (savedTime && savedTime > arrived) {
 
 arrivedTime.value = formatISODateTime(arrived);
 arrivedTime.dispatchEvent(new Event('change', { bubbles: true }));
-
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Saved times:', savedTimeList);
-  console.log('Saved time:', localStorage.getItem(storageKey2));
-  if (savedTimeList?.length > 0) {
-    savedTimeList
-      // .filter(saveTime => saveTime > arrived) // Filter out empty strings
-      .forEach(saveTime => {
-        addTimeItem(saveTime);
-      });
-  }
-});
