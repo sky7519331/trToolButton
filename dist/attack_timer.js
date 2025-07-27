@@ -34,7 +34,7 @@ resetButton.innerHTML = '重設';
 
 const countdownText = document.createElement("p");
 // countdownText.className = 'attack-timer-countdown';
-countdownText.innerHTML = '';
+countdownText.innerHTML = '倒數計時: ';
 
 const timeInput = document.createElement("input");
 timeInput.setAttribute("type", "text");

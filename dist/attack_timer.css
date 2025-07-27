@@ -8,18 +8,13 @@
   display: flex;
 }
 
-.attack-timer > div {
-  display: flex;
-  width: 200px;
-}
-
 .attack-timer-list {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  padding: 0 5px;
 }
 
-.attack-timer-list > div:not(:last-child) {
+.attack-timer-list > *:not(:last-child) {
   margin-bottom: 5px;
 }
 
