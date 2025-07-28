@@ -8,7 +8,7 @@ const getPlayerScore = (keyWork: string) => {
     .has(`th:contains("${keyWork}")`)
     .find(".value")
     .text()
-    .replace(keyWork, "");
+    .replace(/[^\d]/g, "");
   return playerScore || "0";
 };
 
@@ -44,7 +44,7 @@ const getData = () => {
 
 const addButton = () => {
     const btnUpload = $('<button>');
-    btnUpload.text('上傳');
+    btnUpload.text('複製');
     btnUpload.css({
         'padding': '6px 18px',
         'background': 'lightgreen',
