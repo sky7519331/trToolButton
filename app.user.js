@@ -1,16 +1,13 @@
 // ==UserScript==
-// @name         LSN attack timer
+// @name         偷窺按鈕
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @include        *://*.travian.*/build.php*gid=16*tt=2*
-// @exclude     *.css
-// @exclude     *.js
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=edu.tw
+// @include      *://*.travian.*/profile/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=travian.com
 // @grant        none
 // ==/UserScript==
-
 (function () {
     'use strict';
 
@@ -26,7 +23,7 @@
         customScriptJSElement.setAttribute('src', customScriptUrl);
         document.getElementsByTagName("body")[0].appendChild(customScriptJSElement);
     }
-    
+
     scriptReady(main);
 
 })();
