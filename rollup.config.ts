@@ -18,6 +18,8 @@ export default {
 // @include      *://*.travian.*/profile/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=travian.com
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/sky7519331/trToolButton/main/dist/app.user.js
+// @downloadURL  https://raw.githubusercontent.com/sky7519331/trToolButton/main/dist/app.user.js
 // ==/UserScript==`,
   },
   plugins: [
