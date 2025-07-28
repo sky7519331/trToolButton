@@ -24,6 +24,6 @@ export default {
     nodeResolve(),
     commonjs(),
     typescript(),
-    terser(), // 可選，加密/壓縮
+    // terser(), // 可選，加密/壓縮
   ],
 };
