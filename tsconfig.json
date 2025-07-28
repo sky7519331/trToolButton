@@ -111,6 +111,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "exclude": [
+    "webpack.config.ts",
     "eslint.config.mjs",
     "node_modules",
     "dist",
