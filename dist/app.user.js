@@ -5872,15 +5872,15 @@
 	const getDate = () => moment().format("MM/DD\tHH:mm:ss");
 	const getPlayerScore = (keyWork) => {
 	    const playerScore = $("tr")
-	        .has(`th[data-slot="${keyWork}"]`)
+	        .has(`th:contains("${keyWork}")`)
 	        .find(".value")
 	        .text()
 	        .replace(keyWork, "");
 	    return playerScore || "0";
 	};
-	const getEquipment = (className) => {
-	    const classAttr = $(className)
-	        .find(`.heroItem${className} .item`)
+	const getEquipment = (keyWork) => {
+	    const classAttr = $(`[data-slot="${keyWork}"]`)
+	        .find(".item")
 	        .attr("class");
 	    if (!classAttr)
 	        return "";
