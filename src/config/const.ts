@@ -1,5 +1,3 @@
-export const proxy = "socks5://104.171.135.62:61336";
-
 export const KEYWORDS_PLAYER_INFO = "人口";
 export const KEYWORDS_PLAYER_ATTACKER = "攻擊者";
 export const KEYWORDS_PLAYER_DEFENDER = "防禦者";

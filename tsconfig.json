@@ -115,5 +115,6 @@
     "eslint.config.mjs",
     "node_modules",
     "dist",
-  ]
+  ],
+  "include": [ "src" ]
 }
