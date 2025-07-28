@@ -17,12 +17,12 @@ export const playerScoreKeyList = [
 ];
 
 export const playerEquipmentKeyList = [
-  ".helmet",
-  ".body",
-  ".shoes",
-  ".leftHand",
-  ".rightHand",
-  ".horse",
+  "helmet",
+  "body",
+  "shoes",
+  "leftHand",
+  "rightHand",
+  "horse",
 ];
 
 export const EQUIPMENT_MAP: Record<string, string> = {

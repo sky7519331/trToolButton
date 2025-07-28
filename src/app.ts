@@ -5,7 +5,7 @@ const getDate = () => moment().format("MM/DD\tHH:mm:ss");
 
 const getPlayerScore = (keyWork: string) => {
   const playerScore = $("tr")
-    .has(`th:contains("${keyWork}")`)
+    .has(`th[data-slot="${keyWork}"]`)
     .find(".value")
     .text()
     .replace(keyWork, "");

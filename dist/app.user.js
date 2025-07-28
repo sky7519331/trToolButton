@@ -5726,12 +5726,12 @@
 	    KEYWORDS_PLAYER_HERO_LEVEL,
 	];
 	const playerEquipmentKeyList = [
-	    ".helmet",
-	    ".body",
-	    ".shoes",
-	    ".leftHand",
-	    ".rightHand",
-	    ".horse",
+	    "helmet",
+	    "body",
+	    "shoes",
+	    "leftHand",
+	    "rightHand",
+	    "horse",
 	];
 	const EQUIPMENT_MAP = {
 	    "item0": "無裝備",
@@ -5872,7 +5872,7 @@
 	const getDate = () => moment().format("MM/DD\tHH:mm:ss");
 	const getPlayerScore = (keyWork) => {
 	    const playerScore = $("tr")
-	        .has(`th:contains("${keyWork}")`)
+	        .has(`th[data-slot="${keyWork}"]`)
 	        .find(".value")
 	        .text()
 	        .replace(keyWork, "");
