@@ -13807,7 +13807,7 @@
     const addButton = () => {
         const btnUpload = getButton("複製");
         btnUpload.on('click', () => copyDivToClipboard('reportWrapper'));
-        $('reportWrapper').append(btnUpload);
+        $('#reportWrapper').append(btnUpload);
     };
 
     // 設定規則：每個規則包含URL的RegExp與對應腳本檔案(可調整路徑)
