@@ -1,57 +1,32 @@
-import moment from "moment";
-import { EQUIPMENT_MAP, playerEquipmentKeyList, playerScoreKeyList } from "./config/const";
+// 定義URL遮罩與腳本路徑的對應型別
+interface ScriptMapping {
+    pattern: RegExp;
+    scriptPath: string;
+}
 
-const getDate = () => moment().format("MM/DD\tHH:mm:ss");
+// 設定規則：每個規則包含URL的RegExp與對應腳本檔案(可調整路徑)
+const scriptMappings: ScriptMapping[] = [
+    { pattern: /\/profile/, scriptPath: './profile.ts' },
+    { pattern: /\/report/, scriptPath: './reportUpload.ts' },
+];
 
-const getPlayerScore = (keyWork: string) => {
-  const playerScore = $("tr")
-    .has(`th:contains("${keyWork}")`)
-    .find(".value")
-    .text()
-    .replace(/[^\d]/g, "");
-  return playerScore || "0";
+/**
+ * 根據目前 URL，自動載入對應腳本。
+ * @param url - 目前網址（通常為 window.location.pathname）
+ */
+export const loadScriptByUrl = async (url: string): Promise<void> => {
+    for (const mapping of scriptMappings) {
+        if (mapping.pattern.test(url)) {
+            try {
+                await import(/* @vite-ignore */mapping.scriptPath);
+                // 成功載入腳本後可於此執行其他初始化程式
+                break;
+            } catch (error) {
+                console.error(`載入腳本失敗: ${mapping.scriptPath}`, error);
+            }
+        }
+    }
 };
 
-const getEquipment = (keyWork: string) => {
-  const classAttr = $(`[data-slot="${keyWork}"]`)
-    .find(".item")
-    .attr("class");
-  if (!classAttr) return "";
-
-  const equipmentClass = classAttr.replace('item ', '').trim();
-  return EQUIPMENT_MAP[equipmentClass] || "";
-};
-
-const getData = () => {
-  const playerScore = playerScoreKeyList.map(getPlayerScore);
-  const heroInfo = playerScore.join("\t");
-
-  const playerEquipmentKey = playerEquipmentKeyList.map(getEquipment);
-  const heroEquipment = playerEquipmentKey.join("\t");
-
-  const villageList = $(".villages").find("tbody > tr");
-
-  let villageInfo = "";
-  villageList.each((_, village) => {
-    const inhabitants = $(village).find(".inhabitants").text();
-    villageInfo += `${inhabitants}\t`;
-  });
-
-  const copyText = `${getDate()}\t${heroInfo}\t\t${heroEquipment}\t${villageInfo}`;
-  navigator.clipboard.writeText(copyText);
-  alert(`Save ${copyText}`);
-};
-
-const addButton = () => {
-    const btnUpload = $('<button>');
-    btnUpload.text('複製');
-    btnUpload.css({
-        'padding': '6px 18px',
-        'background': 'lightgreen',
-        'border-radius': '6px',
-        'border': '2px solid #000'
-    });
-  $(".titleInHeader").append(btnUpload).on('click', getData);
-};
-
-addButton();
+// 實際使用：通常會以 window.location.pathname 當參數
+loadScriptByUrl(window.location.pathname);

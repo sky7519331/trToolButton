@@ -15,7 +15,7 @@ export default {
 // @version      1.0.0
 // @description  偷窺按鈕!
 // @author       Sky
-// @include      *://*.travian.*/profile/*
+// @include      *://*.travian.*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=travian.com
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/sky7519331/trToolButton/main/dist/app.user.js
