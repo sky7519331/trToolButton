@@ -43,10 +43,8 @@ const getData = () => {
   alert(`Save ${copyText}`);
 };
 
-const addButton = () => {
+export const addButton = () => {
   const btnUpload = getButton("複製");
   btnUpload.on('click', getData);
   $('.titleInHeader').append(btnUpload);
 };
-
-addButton();

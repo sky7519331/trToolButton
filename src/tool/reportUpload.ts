@@ -34,10 +34,8 @@ export const copyDivToClipboard = async (elementId: string): Promise<void> => {
     });
 };
 
-const addButton = () => {
+export const addButton = () => {
   const btnUpload = getButton("複製");
   btnUpload.on('click', () => copyDivToClipboard('reportWrapper'));
-  $('.titleInHeader').append(btnUpload);
+  $('reportWrapper').append(btnUpload);
 };
-
-addButton();
