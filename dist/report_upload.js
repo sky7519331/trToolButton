@@ -15,7 +15,7 @@ button.style.display = 'block';
 button.style.zIndex = 99;
 
 // 2. Append somewhere
-var body = document.getElementsByClassName("reportWrapper")[0];
+var body = document.getElementById("reportWrapper")[0];
 body.appendChild(button);
 
 button.addEventListener("click", () => copyDivToClipboard('reportWrapper'));
